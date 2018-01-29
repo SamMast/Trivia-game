@@ -1,0 +1,52 @@
+body {
+	background-image: url("http://www.triea.org/wp-content/uploads/2015/09/Basketball-Court_Landscape.jpg");
+	color: white;
+	text-align: center;
+}
+
+h1 {
+	font-size: 75px;
+	font-family: 'Playfair Display SC', serif;
+	font-weight: 700;
+}
+
+p {
+	font-family: 'Cinzel', serif;
+	font-size: 20px;
+}
+
+.time {
+	background-color: black;
+	font-size: 15px;
+	width: 150px;
+	margin: auto auto 10px auto;
+}
+
+#timerCount {
+	font-family: 'Orbitron', sans-serif;
+	font-size: 40px;
+}
+
+#currentQuestion {
+	font-family: 'Cinzel', serif;
+	font-size: 40px;
+	background-color: black;
+	margin-bottom: 20px;
+}
+
+.answer {
+	font-family: 'Cinzel', serif;
+	height: 60px;
+	width: 500px;
+	font-size: 30px;
+	background-color: black;
+	padding: 5px 0 5px 0;
+	border-radius: 25px;
+	border-style: solid;
+	border-color: white;
+	margin: auto;
+}
+
+.answerBox {
+	margin-top: 10px;
+}
