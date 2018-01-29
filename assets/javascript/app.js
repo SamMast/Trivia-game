@@ -14,6 +14,8 @@ $(document).ready(function() {
 
 	$(".answer").hide();
 	$(".time").hide();
+	$(".fail").hide();
+	$(".success").hide();
 
 	//API for questions
 	var queryURL = "https://qriusity.com/v1/categories/1/questions?page=" + questionList + "&limit=20";
@@ -127,6 +129,10 @@ $(document).ready(function() {
 						$(".answer").hide();
 						$(".time").hide();
 
+						$(".success").show();
+
+
+
 						$("#currentQuestion").text("Correct! The answer was Number " + answer + ", '" + answerText + "'");
 						$("#1").text("");
 						$("#2").text("");
@@ -140,6 +146,7 @@ $(document).ready(function() {
 						setTimeout(function(){
 						
 						nextQuestion();
+						$(".success").hide();
 
 						intervalId = setInterval(timerCount, 1000);
 
@@ -159,6 +166,8 @@ $(document).ready(function() {
 						$(".answer").hide();
 						$(".time").hide();
 
+						$(".fail").show();
+
 						$("#currentQuestion").text("Wrong! The answer was Number " + answer + ", '" + answerText + "'");
 						$("#1").text("");
 						$("#2").text("");
@@ -172,6 +181,7 @@ $(document).ready(function() {
 						setTimeout(function(){
 						
 						nextQuestion();
+						$(".fail").hide();
 
 						intervalId = setInterval(timerCount, 1000);
 
