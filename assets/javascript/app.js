@@ -41,7 +41,7 @@ $(document).ready(function() {
 
 		}
 
-		//Time's up and Reset
+		//Time's up and 5 second Reset
 		function timeUp() {
 			clearInterval(intervalId);
 
@@ -63,13 +63,16 @@ $(document).ready(function() {
 				$("#timerCount").text(timeLeft);
 				x = 0;
 
+				//For here, need to figure out how to get the Ajax to reset to the new questionList value the timer 
+
+
+
+
 				nextQuestion();
 
 				intervalId = setInterval(timerCount, 1000);
 				timerRunning = true
 				
-				//For here, need to figure out how to get the Ajax to reset to the new questionList value the timer 
-					//and then reset x to 0 to start at beginning of new list
       		
       		}, 5000);
 
