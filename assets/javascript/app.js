@@ -4,7 +4,7 @@ $(document).ready(function() {
 	var answer;
 	var answerText = "";
 	var x = 0;
-	var questionList = 9;
+	var questionList = 10;
 	var winCount = 0;
 	var lossCount = 0;
 	var intervalId;
@@ -54,6 +54,7 @@ $(document).ready(function() {
 			$("#3").text("");
 			$("#4").text("");
 
+			//after 5 seconds, reset
 			setTimeout(function(){
 
 				timeLeft = 24;
@@ -63,12 +64,12 @@ $(document).ready(function() {
 				$("#timerCount").text(timeLeft);
 				x = 0;
 
-				//For here, need to figure out how to get the Ajax to reset to the new questionList value the timer 
-
+				//For here, need to figure out how to get the Ajax to reset to the new questionList value
 
 
 
 				nextQuestion();
+
 
 				intervalId = setInterval(timerCount, 1000);
 				timerRunning = true
@@ -92,7 +93,7 @@ $(document).ready(function() {
 
 			answer = response[x].answers;
 			
-			answerText = (response[x].option + answer);
+			answerText = (response[x]["option" + answer]);
 
 		}
 
@@ -126,7 +127,7 @@ $(document).ready(function() {
 						$(".answer").hide();
 						$(".time").hide();
 
-						$("#currentQuestion").text("Correct! The answer was option " + answer + ", '" + answerText + "'");
+						$("#currentQuestion").text("Correct! The answer was Number " + answer + ", '" + answerText + "'");
 						$("#1").text("");
 						$("#2").text("");
 						$("#3").text("");
@@ -158,7 +159,7 @@ $(document).ready(function() {
 						$(".answer").hide();
 						$(".time").hide();
 
-						$("#currentQuestion").text("Wrong! The answer was option " + answer + ", '" + answerText + "'");
+						$("#currentQuestion").text("Wrong! The answer was Number " + answer + ", '" + answerText + "'");
 						$("#1").text("");
 						$("#2").text("");
 						$("#3").text("");
