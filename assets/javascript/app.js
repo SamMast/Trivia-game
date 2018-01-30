@@ -47,10 +47,16 @@ $(document).ready(function() {
 		function timeUp() {
 			clearInterval(intervalId);
 
+			var buzzerAudio = document.createElement("audio");
+			buzzerAudio.setAttribute("src", "http://www.wavsource.com/snds_2018-01-14_3453803176249356/sfx/buzzer_x.wav");
+			buzzerAudio.play();
+
 			$(".answer").hide();
 			$(".time").show();
-
-			$("#currentQuestion").text("Time's Up! You had " + winCount + " questions correct and " + lossCount + " questions incorrect.  Game will restart in 5 sec . . .");
+			$(".fail").hide();
+			$(".success").hide();
+			
+			$("#currentQuestion").text("Game Over! You had " + winCount + " questions correct and " + lossCount + " questions incorrect.  Game will restart in 5 sec . . .");
 			$("#1").text("");
 			$("#2").text("");
 			$("#3").text("");
@@ -131,7 +137,9 @@ $(document).ready(function() {
 
 						$(".success").show();
 
-
+						var correctAudio = document.createElement("audio");
+						correctAudio.setAttribute("src", "");
+						correctAudio.play();
 
 						$("#currentQuestion").text("Correct! The answer was Number " + answer + ", '" + answerText + "'");
 						$("#1").text("");
@@ -143,15 +151,23 @@ $(document).ready(function() {
 						console.log("Losses: " + lossCount);
 						console.log("Now on Question: " + x);
 
-						setTimeout(function(){
-						
-						nextQuestion();
-						$(".success").hide();
+						if ((winCount + lossCount) >= 20) {
 
-						intervalId = setInterval(timerCount, 1000);
+							timerRunning = false;
+							timeUp();
+
+						} else {
+
+							setTimeout(function(){
+							
+							nextQuestion();
+							$(".success").hide();
+
+							intervalId = setInterval(timerCount, 1000);
 
 
-      					}, 2000);
+	      					}, 2000);
+	      				}
 
 
 					//Incorrect guess
@@ -168,6 +184,10 @@ $(document).ready(function() {
 
 						$(".fail").show();
 
+						var incorrectAudio = document.createElement("audio");
+						incorrectAudio.setAttribute("src", "");
+						incorrectAudio.play();
+
 						$("#currentQuestion").text("Wrong! The answer was Number " + answer + ", '" + answerText + "'");
 						$("#1").text("");
 						$("#2").text("");
@@ -178,15 +198,24 @@ $(document).ready(function() {
 						console.log("Losses: " + lossCount);
 						console.log("Now on Question: " + x);
 
-						setTimeout(function(){
-						
-						nextQuestion();
-						$(".fail").hide();
+						if ((winCount + lossCount) >= 20) {
 
-						intervalId = setInterval(timerCount, 1000);
+							timerRunning = false;
+							timeUp();
 
 
-      					}, 2000);
+						} else {
+							setTimeout(function(){
+							
+							nextQuestion();
+							$(".fail").hide();
+
+							intervalId = setInterval(timerCount, 1000);
+
+
+	      					}, 2000);
+
+	      				}
 
 					}
 
